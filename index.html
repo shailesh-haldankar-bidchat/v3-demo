@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button onclick="handleCheckout()">Checkout</button>
+    </div>
+
+</body>
+<script>
+    function handleCheckout() {
+        const iframe = document.createElement("iframe");
+        iframe.classList.add("full_page")
+        iframe.style.display = "flex";
+        iframe.src = "https://checkout.niceandsticky.com/webview-connect?products=[%7B%22id%22:86962,%22quantity%22:2%7D]&subscription=false&target=/checkout&cart=true&ageConfirm=true&deliveryTypeSelected=1&placeId=EioxMDUwIFcgQWxhbWVkYSBBdmUsIEJ1cmJhbmssIENBIDkxNTA2LCBVU0EiMRIvChQKEgkNIYGH77_CgBE1oMbncI4HlxCaCCoUChIJzUbHb92_woARqst1Dg-kXsM&routeData=%7B%22homeUrl%22:true,%22origin%22:%22https://demo-v3.grassdoor.com%22,%22path%22:%22/%22%7D";
+        document.body.appendChild(iframe);
+    }
+
+</script>
+<style>
+    .full_page {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+</style>
+
+</html>
