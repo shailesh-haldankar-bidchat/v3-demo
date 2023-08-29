@@ -9,18 +9,33 @@
 </head>
 
 <body>
-    <div>
-        <button onclick="handleCheckout()">Checkout</button>
+    <div class="main" id="main">
+        <button class="checkout" onclick="handleCheckout()">Checkout</button>
+        <nav class="navbar">
+            <button onclick="closeIFrame()">back</button>
+
+        </nav>
     </div>
 
 </body>
 <script>
     function handleCheckout() {
         const iframe = document.createElement("iframe");
+        // const main = document.getElementById("main")
+        main.classList.add('new')
         iframe.classList.add("full_page")
+        iframe.setAttribute("id", "checkout-page")
         iframe.style.display = "flex";
-        iframe.src = "https://pre-checkout.grassdoor.com/webview-connect?deliveryTypeSelected=2&cart=true&ageConfirm=true&target=/checkout&products=[%7B%22id%22:14635,%22quantity%22:1%7D]&placeId=ChIJy_HKAs6kwoARr_r8wPu4zxM&routeData=%7B%22homeUrl%22:true,%22origin%22:%22https://pre-checkout-test.grassdoor.com%22,%22path%22:%22/%22%7D";
-        document.body.appendChild(iframe);
+        iframe.src = "https://devnextsaasswagger.grassdoor.com/webview-connect?deliveryTypeSelected=2&cart=true&ageConfirm=true&target=/checkout&products=[{%22id%22:1705,%22quantity%22:1}]&placeId=ChIJy_HKAs6kwoARr_r8wPu4zxM&routeData={%22homeUrl%22:true,%22origin%22:%22https://demo-v3.grassdoor.com%22,%22path%22:%22/%22}";
+        main.appendChild(iframe);
+    }
+
+    function closeIFrame() {
+        let ele = document.getElementById("checkout-page")
+        console.log("text", ele);
+        const main = document.getElementById("main")
+        main.classList.remove('new')
+        ele.remove()
     }
 
 </script>
@@ -30,7 +45,20 @@
         width: 100vw;
         position: fixed;
         left: 0;
-        top: 0;
+        top: 65px;
+    }
+
+    .main .navbar {
+        display: none;
+        height: 65px;
+    }
+
+    .new .navbar {
+        display: block;
+    }
+
+    .new .checkout {
+        display: none;
     }
 </style>
 
